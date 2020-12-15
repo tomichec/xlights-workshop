@@ -1,15 +1,4 @@
-# Xmas lights in Bordel 
-
-Workshop will guide you through setup of microcontroller with Micropython enviroment and using it to control Neopixel lights. 
-
-## Prerequisties 
-
-* Microcontroller with ESP8266 or ESP32 chip, for example NodeMCU
-* Computer (preferably with Linux)
-* Neopixel LED stripe - WS2812, WS2812B or WS2811 will do
-
-
-# X-Lights Workshop
+# X-Lights Workshop 
 
 Workshop will guide you through setup of microcontroller with Micropython enviroment and using it to control Neopixel lights. 
 
