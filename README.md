@@ -6,38 +6,40 @@ Learn programming with WS2812 ligthts and microcontroller!
 
 ## Hardware
 
-- ESP32 or ESP2812 (other microcontrollers such as Arduino or STM32 should work too)
-- solderless breadboard
-- DC power source 5V (up to 12V can be used to power the lights, but NOT the ESP, which has to be powered via USB in such a case!)
+- Board with ESP32 or ESP8266 chip (other microcontrollers such as Arduino or STM32 should work too)
+- Solderless breadboard
+- Wires for connections
+- Neopixel LED stripe - WS2812, WS2812B or WS2811 will do
+- DC power sources 5V/12V (up to 12V can be used to power the lights, but NOT the ESP, which has to be powered via USB in such a case!)
+- Micro USB cable for connecting microcontroller with PC
 
 (optionally)
 - 1 mF capacitor
-- 470 rezistor
+- 470 resistor
 
 ## Software
 
-on the computer:
+You will need to install [Python](https://www.python.org/downloads/) and pip on your computor. There is bunch of different tools in Python which can help us to use ESP microcontroller. To make it easier, we can use GUI IDE called [Thonny](https://thonny.org/). 
 
-GUI:
-- thonny
+You can simply install it with pip for example:
+```
+pip3 install thonny
+```
+Other command tools installable with pip which can be helpfull are:
 
-Command line tools via `pip install` (optionally):
+- esptool (flashing firmware)
+- adafruit-ampy (copying, executing files)
+- picom (terminal REPL prompt)
 
-- esptool
-- adafruit-ampy
-- picom
+## Firmware
+For this workshop, we will use [Micropython][micropython] enviroment. Download newest Micropython firmware suitable for your microcontroller. For example [here for ESP8266](https://micropython.org/download/esp8266/). 
 
-## Microcontroller
-
-[Micropython][micropython] for your version of micronotroller.
-
-[micropython]: https://micropython.org/download/
-
-# Procedure
+# Preparing microcontroller
 
 ## GUI
 
-(Mario)
+Using Thonny, first go to `Tool -> Options -> Interpreter`. 
+Here pick interpreter with Micropython for your chip and click on `Install or update firmware`. Make sure microcontroller is connected and pick USB port to communicate with it. Choose downloaded firmware from your drive and install it on microcontroller. This will take few seconds or minutes and your device is ready to be run code in Micropython. 
 
 ## Command line
 
@@ -64,26 +66,38 @@ ampy --port /dev/ttyUSB0 --baud 115200 run ws2812.py
 ```
 The boot.py or main.py will be run on the startup.
 
+## Wiring and connecting lights
+
+Place microcontroller on the breadboard, connect to computer and now let's connect Neopixel lights. 
+* Ground (GND) of the microcontroller board and negative potential of lights power supply has to be connected. 
+    * Make sure to connect these, otherwise, the signal won't get through properly and the lights will be incontrollable.
+* Connect data wire to one of pin outputs on the board, for example D2.
+    * Reffer to pinout
+    * Optionally use small (300-500ohm) resistor between data wire and pin
+* Coonect LEDs to power supply and optionally put capacitor between potentials
+
+Now everything should be setup to blink your LEDs. 
 
 ## Hello Lights
 
-IMPORTANT: Make sure the ground (GND) of the microcontroler and the lights are interconnected. Otherwise, the signal won't get through properly and the lights will be incontrollable.
 
-To start with the lights we follow [the manual][upy]. According this manual the lights use the Machine pin 0, which can be found in ESP2812 pinout image to be D3.
+To start with the lights we follow [the manual][upy] in Micropython documentation. According this manual the lights use the Machine pin 4, which can be found in ESP2812 pinout image to be D2.
 
 ![Image](ESP8266-NodeMCU-kit-12-E-pinout-gpio-pin.png "ESP8266 pinout")
 
-[upy]: https://docs.micropython.org/en/latest/esp32/quickref.html#neopixel-driver
+[upy]: https://docs.micropython.org/en/latest/esp8266/tutorial/neopixel.html
 
-```python
+```
+>>>>>>> bordel/main
 from machine import Pin
 from neopixel import NeoPixel
 
 N = 50                  # number of LED in the chain
-pin = Pin(0, Pin.OUT)   # set GPIO0 to output to drive NeoPixels
+pin = Pin(4, Pin.OUT)   # set GPIO4 to output to drive NeoPixels
 np = NeoPixel(pin, N)   # create NeoPixel driver on GPIO0 for 8 pixels
 np[0] = (255, 255, 255) # set the first pixel to white
 np.write()              # write data to all pixels
+r, g, b = np[0]         # get first pixel colour
 ```
 After running the code you can see that the LED number 0 (i.e. the first one) is turned on white. This is because `np[0]` represents the first pixel of the variable `np` (number 0).
 
@@ -220,3 +234,7 @@ If you wish to support us, you can do so via (Mario??)
 
 [Tomas](mailto:tomas@stary.co.uk)
 [Mario](??)
+=======
+## Turn on All
+
+Now lets setup a color of the whole chain to be pink, which is encoded as `pink = (0,255,50)`. 
