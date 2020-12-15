@@ -2,14 +2,14 @@
 
 This document is alive! If you spot a mistake or have a suggestion for its improvement send us a PR.
 
-Learn programming with WS2812 ligthts and microcontroller!
+Workshop will guide you through setup of microcontroller with Micropython environment and using it to control Neopixel lights. 
 
 # Prerequisites
 
 ## Hardware
 
 - Board with ESP32 or ESP8266 chip (other microcontrollers such as Arduino or STM32 should work too)
-- Solderless breadboard
+- Solder-less breadboard
 - Wires for connections
 - Neopixel LED stripe - WS2812, WS2812B or WS2811 will do
 - DC power sources 5V/12V (up to 12V can be used to power the lights, but NOT the ESP, which has to be powered via USB in such a case!)
@@ -21,17 +21,17 @@ Learn programming with WS2812 ligthts and microcontroller!
 
 ## Software
 
-You will need to install [Python](https://www.python.org/downloads/) and pip on your computor. There is bunch of different tools in Python which can help us to use ESP microcontroller. To make it easier, we can use GUI IDE called [Thonny](https://thonny.org/). 
+You will need to install [Python](https://www.python.org/downloads/) and pip on your computer. There is bunch of different tools in Python which can help us to use ESP microcontroller. To make it easier, we can use GUI IDE called [Thonny](https://thonny.org/). 
 
 You can simply install it with pip for example:
 ```
 pip3 install thonny
 ```
-Other command tools installable with pip which can be helpfull are:
+Other command tools installable with pip which can be helpful are:
 
 - esptool (flashing firmware)
 - adafruit-ampy (copying, executing files)
-- picom (terminal REPL prompt)
+- picocom (terminal REPL prompt)
 
 ## Firmware
 For this workshop, we will use [Micropython][micropython] enviroment. Download newest Micropython firmware suitable for your microcontroller. For example [here for ESP8266](https://micropython.org/download/esp8266/). 
@@ -74,9 +74,9 @@ Place microcontroller on the breadboard, connect to computer and now let's conne
 * Ground (GND) of the microcontroller board and negative potential of lights power supply has to be connected. 
     * Make sure to connect these, otherwise, the signal won't get through properly and the lights will be incontrollable.
 * Connect data wire to one of pin outputs on the board, for example D2.
-    * Reffer to pinout
+    * Refer to pinout
     * Optionally use small (300-500ohm) resistor between data wire and pin
-* Coonect LEDs to power supply and optionally put capacitor between potentials
+* Connect LEDs to power supply and optionally put capacitor between potentials
 
 Now everything should be setup to blink your LEDs. 
 
@@ -90,7 +90,6 @@ To start with the lights we follow [the manual][upy] in Micropython documentatio
 [upy]: https://docs.micropython.org/en/latest/esp8266/tutorial/neopixel.html
 
 ```
->>>>>>> bordel/main
 from machine import Pin
 from neopixel import NeoPixel
 
