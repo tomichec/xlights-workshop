@@ -6,6 +6,7 @@ red = (0,255,0)
 blue = (0,0,255)
 
 ledOff = (0,0,0)
+black = ledOff
 white = (255,255,255)
 orange = (40,255,0)
 

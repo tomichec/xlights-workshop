@@ -55,6 +55,10 @@ Then we can upload the micropython firmware downloaded (e.g. espXXXX.bin) using:
 ```
 esptool.py --chip esp32 --port /dev/ttyUSB0 write_flash -z 0x1000 espXXXX.bin
 ```
+or in case you have esp8266 with
+```
+esptool.py --port /dev/ttyUSB0 --baud 460800 write_flash --flash_size=detect -fm dio 0 esp8266-xxx.bin
+```
 
 To get the micropython command line prompt we can use picocom
 ```

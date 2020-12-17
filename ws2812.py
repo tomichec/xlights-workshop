@@ -200,40 +200,15 @@ def dark_snake():
     np.write()
     
     loop_around(10,100,green)
-    
-
 
 ##############################
 # main code
-N = 100
+N = 75
 np = neopixel.NeoPixel(machine.Pin(4), N)
 np2 = neopixel.NeoPixel(machine.Pin(4), N)
 
-# NC = len(color)
+NC = len(color)
 
-# setSolid(ledOff)
-# np[74] = pink
-# np.write()
-
-
-# dark_snake()
-
-
-########################################
-# wish your color
-# np[42] = red
-# np[33] = green
-# np[2] = yellow
-# np[8] = blue
-
-# for i in range(15,20):
-#     np[i] = blue
-
-# np[17] = pink
-
-# np[44] = white
-
-# np[27] =  (71,141,23)
 
 # for i in range(100):
 #     if i % 2:
@@ -258,7 +233,6 @@ np2 = neopixel.NeoPixel(machine.Pin(4), N)
 
 # for i in range(50):
 #     run(ledOff, 10, i % 2)
-# loop_around(1,100,pink)
 
 # bounce(blue, ledOff)
 
@@ -287,6 +261,10 @@ np[11] = blue
 np.write()
 while 1:
     loop_around(500,250,pink)
+    dark_snake()
     ping_pong()
+    loop_around(1,100,black)
+
+
 
 
