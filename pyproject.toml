@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "xlights-worshop"
+version = "0.1.0"
+description = ""
+authors = [
+        "Tomas Stary <tomas@stary.co.uk>",
+        "Mário Havel <61149543+taxmeifyoucan@users.noreply.github.com>"
+]
+license = "GNU GPLv3+"
+readme = "README.md"
+packages = [{include = "xlights_workshop"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+esptool = "^4.6.2"
+thonny = "^4.1.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
